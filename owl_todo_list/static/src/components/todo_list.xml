@@ -5,7 +5,10 @@
         <div class="todo-list-container">
             <div class="row mx-2 mt-3">
                 <div class="col-lg-6">
-                    <button class="btn btn-primary" t-on-click="addTask">New</button>
+                    <button
+                        class="btn btn-primary o_button_add_task"
+                        t-on-click="addTask"
+                    >New</button>
                 </div>
             </div>
 
@@ -21,11 +24,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr t-foreach="state.taskList" t-as="task" t-key="task.id">
+                            <tr
+                                t-foreach="state.taskList"
+                                t-as="task"
+                                t-key="task.id"
+                                class="todo-list-item"
+                            >
                                 <td>
                                     <input
                                         class="form-check-input"
                                         type="checkbox"
+                                        name="completed"
                                         t-att-id="task.id"
                                         t-att-checked="task.completed"
                                         t-on-click="(e)=>this.toggleTask(e, task)"
@@ -33,6 +42,7 @@
                                     />
                                     <a
                                         href="#"
+                                        class="todo-list-item-open"
                                         t-on-click="()=>this.openInForm(task)"
                                         t-esc="task.name"
                                     />
@@ -40,6 +50,7 @@
                                 <td>
                                     <input
                                         type="color"
+                                        name="color"
                                         class="form-control form-control-color"
                                         id="colorInput"
                                         t-att-value="task.color"
